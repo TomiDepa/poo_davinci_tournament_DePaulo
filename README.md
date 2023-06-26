@@ -24,15 +24,23 @@
 
 [-] Mostrar el marcado e indicar quien ganó
 
+[-] Agregar jugadores a teamA usando iteración
+
+[ ] Agregar jugadores a teamB usando iteración
+
+[-] Agregar jugares a teamC y teamD
+
+[-] Agregar jugares a teamE y teamF
+
 ![class_diagram.png](class_diagram.png)
 
 
 ## Actualización TP
-[ ] Crear la clase Llave que hereda de Season. Tiene que definido:
+[-] Crear la clase Llave que hereda de Season. Tiene que definido:
 
     - ArrayList<Equipo> getEquiposQueAvanzan()
 
-[ ] Crear la clase Grupo que hereda de Season. Tiene que definido:
+[-] Crear la clase Grupo que hereda de Season. Tiene que definido:
 
     - ArrayList<Equipo> getEquiposQueAvanzan()
 
@@ -42,13 +50,25 @@
     - private int visitantGoalCounter;
     - getter y setters
 
-[ ] Actualizar la clase Match
+[-] Actualizar la clase Match
 
     - sacamos localGoalCounter y visitantGoalCounter (sus getters y setter tambien) y dejamos MatchResult result;
 
-[ ] Agregar en MatchResult
+[-] Agregar en MatchResult
 
     - ganoLocal(): boolean
     - empate(): boolean
 
-[ ] modificar getWinner()
+[-] modificar getWinner()
+
+[ ] En la clase Team, agregar el constructor que soporte String[] players y que itere agregando players
+
+[ ] Migrar en Main las implementaciones de la creación de teams, usando el constructor (String, String[])
+
+[ ] Eliminar objetos de Player en Main
+
+[ ] Agregar partidos entre teamC y teamD, teamE y teamF
+
+[ ] Agregar jugadorres a teamG y teamH, y el partido
+
+

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        //TODO: Eliminar objetos de Player en Main
         Player teacher = new Player("Teacher");
         Player student1 = new Player("Student 1");
       
@@ -20,26 +21,51 @@ public class Main {
         //ArrayList<Player> playersA = new ArrayList<>();
         //playersA.add(teacher);
         //playersA.add(student1);
-
-        //Team teamA = new Team("Equipo A", playersA);
+        String[] teamlistA = {"Messi", "DiMaria", "Isabel", "Isaac"};
         Team teamA = new Team("Equipo A");
-        teamA.addPlayer(messi);
-        teamA.addPlayer(diMaria);
-        teamA.addPlayer(isabel);
-        teamA.addPlayer(isaac);
-        
+        for (String name : teamlistA) {
+            teamA.addPlayer(new Player(name));
+        }
+
+        String[] teamlistB = {"Tomas", "Jogher", "Paco", "Franco"};
         Team teamB = new Team("Equipo B");
-        teamB.addPlayer(new Player("Tomas"));
-        teamB.addPlayer(new Player("Jogher"));
-        teamB.addPlayer(new Player("Paco"));
-        teamB.addPlayer(new Player("Franco"));
+        for (String name : teamlistB) {
+            teamA.addPlayer(new Player(name));
+        }
+
+        String [] teamCList =  {"Almada", "Dybala", "DePaul", "MacAllister"};
+        Team teamC = new Team("Equipo C");
+        for (String name : teamCList){
+            teamC.addPlayer(new Player(name));
+        }
+
+        String [] teamDList =  {"Pepe", "Lucio", "Mario", "Luigi"};
+        Team teamD = new Team("Equipo D");
+        for (String name : teamDList){
+            teamD.addPlayer(new Player(name));
+        }
+      
+        Team teamE = new Team("Equipo E");
+        String [] playersE = {"Ana", "Carlos", "Sofia", "Javier", "Javier","Mariana"};
+        for (String player: playersE){
+            teamE.addPlayer (new Player(player));
+        };
+      
+        Team teamF = new Team("Equipo F");
+        String [] playersF = {"Laura", "Diego", "Valentina", "Alejandro", "Gabriela"};
+        for (String player: playersF){
+            teamF.addPlayer (new Player(player));
+        }
+
+        //TODO: Migrar en Main las implementaciones de la creación de teams, usando el constructor (String, String[])
         
-        //showMembers
+        //TODO: Agregar jugadorres a teamG y teamH, y el partido
+
        teamA.showMembers();
       
-        teamB.showMembers();
+       teamB.showMembers();
   
-      //System.out.println(tomas.showTeam());
+        //System.out.println(tomas.showTeam());
 
         Match primerPartido = new Match(teamA, teamB);
 
@@ -48,6 +74,11 @@ public class Main {
         primerPartido.makeVisitantGoal(3);
 
         System.out.println(primerPartido.getMatchStatus());
+
+        //TODO: Agregar partidos entre teamC y teamD, teamE y teamF
+
+
+        //TODO: Agregar jugadorres a teamG y teamH, y el partido
 
     }
 

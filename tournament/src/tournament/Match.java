@@ -5,10 +5,9 @@ import java.util.Date;
 public class Match {
     private String location;
     private Date date;
-    private  Team localTeam;
+    private Team localTeam;
     private Team visitantTeam;
-    private int localGoalCounter;
-    private int visitantGoalCounter;
+    private MatchResult result;
 
     public String getLocation() {
         return location;
@@ -42,53 +41,52 @@ public class Match {
         this.visitantTeam = visitantTeam;
     }
 
-    public int getLocalGoalCounter() {
-        return localGoalCounter;
+    public MatchResult getMatchResult() {
+        return result;
     }
 
-    public void setLocalGoalCounter(int localGoalCounter) {
-        this.localGoalCounter = localGoalCounter;
+    public void setMatchResult(MatchResult result) {
+        this.result = result;
     }
 
-    public int getVisitantGoalCounter() {
-        return visitantGoalCounter;
-    }
-
-    public void setVisitantGoalCounter(int visitantGoalCounter) {
-        this.visitantGoalCounter = visitantGoalCounter;
-    }
-
-    public Match (Team localTeam, Team visitantTeam) {
+    public Match(Team localTeam, Team visitantTeam) {
         setLocalTeam(localTeam);
         setVisitantTeam(visitantTeam);
     }
 
-    public int getWinner (){
-       if (getLocalGoalCounter() > getVisitantGoalCounter()){
-           return getLocalGoalCounter();
-       } else {
-           return getVisitantGoalCounter();
+//getWinner and getMatchStatus must be modified
 
-       }
+
+    public String getMatchStatus() {
+        //return this.getLocalTeam().getName() +" "+this.getLocalGoalCounter()+
+        //" - "
+        // +this.getVisitantGoalCounter()+" "+this.getVisitantTeam().getName();
+        return "Placeholder";
     }
 
-    public String getMatchStatus(){
-        return this.getLocalTeam().getName() +" "+this.getLocalGoalCounter()+
-                " - "
-                +this.getVisitantGoalCounter()+" "+this.getVisitantTeam().getName();
-
-    }
-        
-    public void makeVisitantGoal (int playerPosition){
+    public void makeVisitantGoal(int playerPosition) {
         Player playerWhoMakeGoal = getVisitantTeam().getPlayers().get(playerPosition);
         playerWhoMakeGoal.incrementGoalCounter();
-        visitantGoalCounter++;
+        int updated_VisitantGoalCounter = (getMatchResult().getVisitantGoalCounter()) + 1;
+        getMatchResult().setVisitantGoalCounter(updated_VisitantGoalCounter);
     }
 
-    public void makeLocalGoal(int playerPosition){
+
+    public void makeLocalGoal(int playerPosition) {
         Player playerWhoMakeGoal = getLocalTeam().getPlayers().get(playerPosition);
         playerWhoMakeGoal.incrementGoalCounter();
-        localGoalCounter++;
+        int updated_LocalGoalCounter = (getMatchResult().getLocalGoalCounter()) + 1;
+        getMatchResult().setLocalGoalCounter(updated_LocalGoalCounter);
+    }
+
+    public String getWinner() {
+        if (getMatchResult().localWin()) {
+            return getLocalTeam().getName();
+        } else if (getMatchResult().tie()) {
+            return "Empate";
+        } else {
+            return getVisitantTeam().getName();
+        }
     }
 }
 
